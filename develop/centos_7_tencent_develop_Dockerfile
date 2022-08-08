@@ -13,7 +13,7 @@ ENV \
 	TZ=Asia/Shanghai \
 	LANG=en_US.utf8 \
 	LC_ALL=en_US.utf8 \
-	PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH \
-	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/lib64
+	PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH \
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib64:/usr/local/lib
 
 CMD ["/bin/bash"]
