@@ -1,0 +1,19 @@
+FROM centos:7
+
+RUN \
+	mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup && \
+	curl -Lo /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo && \
+	curl -Lo /etc/yum.repos.d/epel-7.repo http://mirrors.cloud.tencent.com/repo/epel-7.repo && \
+	yum clean all && \
+	yum makecache && \
+	yum update -y && \
+	yum install -y automake autoconf libtool make which gcc-c++ cmake3 ccache python-devel cargo glibc-static gperf man flex bison autoconf-archive git patch libstdc++ libstdc++-devel libstdc++-static yasm
+
+ENV \
+	TZ=Asia/Shanghai \
+	LANG=en_US.utf8 \
+	LC_ALL=en_US.utf8 \
+	PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH \
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/lib64
+
+CMD ["/bin/bash"]
