@@ -14,9 +14,17 @@ patch:
 	@echo "${SRC_NAME} patch done"
 
 configure:
+	echo $(CFLAGS); \
 	( cd $(SRC_NAME); \
 	./configure \
+	--pkg-config-flags=--static \
+	--extra-ldflags=-lpthread \
+	--enable-static \
+	--disable-shared \
+	--enable-pthreads \
 	--enable-gpl \
+	--disable-doc \
+	--disable-debug \
 	--enable-libx265; \
 	)
 	@echo "${SRC_NAME} configure done"
